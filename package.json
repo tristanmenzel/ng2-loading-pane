@@ -1,10 +1,11 @@
 {
   "name": "ng2-loading-pane",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "A simple loading pane implementation for angular 2 based on promises.",
   "readme": "readme.md",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "repository": "https://github.com/tristanmenzel/ng2-loading-pane.git",
   "scripts": {
     "test": "ngc -p tsconfig.json",
     "prepublish": "gulp prepublish"
