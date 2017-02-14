@@ -1,11 +1,11 @@
-import {NgModule} from "@angular/core";
-import {LoadingPaneComponent} from "./components/loading-pane/loading-pane.component";
+import {NgModule, ModuleWithProviders} from "@angular/core";
+import {LoadingPaneComponent} from "./components/loading-pane";
 import {
-    LoadingPaneService,
-    defaultLoadingPaneServiceFactory
-} from "./services/loading-pane/loading-pane.service";
+    WorkTrackerFactory,
+    WorkTracker,
+    defaultWorkTrackerFactoryFactory
+} from "./services/work-tracker.service";
 import {BrowserModule} from "@angular/platform-browser";
-
 
 
 @NgModule({
@@ -19,8 +19,10 @@ import {BrowserModule} from "@angular/platform-browser";
         BrowserModule
     ],
     providers: [
-        {provide:  LoadingPaneService, useFactory: defaultLoadingPaneServiceFactory, deps: []}
+        {provide: WorkTrackerFactory, useFactory: defaultWorkTrackerFactoryFactory, deps: []}
     ]
 })
 export class LoadingPaneModule {
 }
+
+export {WorkTrackerFactory, WorkTracker, LoadingPaneComponent};

@@ -1,25 +1,32 @@
 {
   "name": "ng2-loading-pane",
-  "version": "0.0.1",
+  "version": "0.0.15",
   "description": "Ng2 version of my angular loading pane.",
   "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
-    "prepublish": "tsc"
+    "test": "ngc -p tsconfig.json",
+    "prepublish": "gulp prepublish"
   },
   "author": "Tristan Menzel",
   "license": "ISC",
-  "dependencies": {
-    "@angular/common": "^2.4.5",
-    "@angular/core": "^2.4.5",
-    "@angular/platform-browser": "^2.4.5",
-    "rxjs": "^5.1.0",
-    "zone.js": "^0.7.6"
+  "dependencies": {},
+  "peerDependencies": {
+    "@angular/common": "^2.3.1",
+    "@angular/core": "^2.3.1",
+    "@angular/platform-browser": "^2.3.1",
+    "rxjs": "^5.0.0",
+    "zone.js": "^0.7.0"
   },
   "devDependencies": {
+    "@angular/compiler": "^2.4.7",
+    "@angular/compiler-cli": "^2.4.7",
     "@types/node": "^7.0.4",
+    "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-angular-embed-templates": "^2.3.0",
     "gulp-angular2-embed-sass": "^0.3.0",
+    "gulp-bump": "^2.6.1",
     "gulp-typescript": "^3.1.4",
     "typescript": "^2.1.5"
   }

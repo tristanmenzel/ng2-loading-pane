@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
+
     "baseUrl": "",
     "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": ["es6", "dom"],
-    "module": "commonjs",
+    "module": "es2015",
     "moduleResolution": "node",
     "noImplicitAny": true,
     "outDir": "./dist",
@@ -16,9 +17,11 @@
     ]
   },
   "files": [
-    "src/index.ts"
+    "build/index.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "angularCompilerOptions": {
+    "genDir": "build",
+    "annotateForClosureCompiler": true,
+    "strictMetadataEmit": true
+  }
 }

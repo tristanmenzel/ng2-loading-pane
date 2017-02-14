@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
-import { WorkTracker} from "../../services/loading-pane/loading-pane.service";
+import { WorkTracker} from "../../services/work-tracker.service";
 import {Observable} from "rxjs";
 
 @Component({
@@ -18,9 +18,8 @@ export class LoadingPaneComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.isLoading = this.tracker.complete.map(x=>{
-            console.log(x);
-            return !x;
+        this.isLoading = this.tracker.complete.map((isComplete:boolean)=>{
+            return !isComplete;
         });
     }
 
