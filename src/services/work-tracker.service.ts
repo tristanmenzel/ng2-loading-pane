@@ -1,10 +1,12 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OpaqueToken, Inject} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
+
+export const DEfAULT_MIN_DELAY_TOKEN = new OpaqueToken('Default min dalay');
 
 @Injectable()
 export class WorkTrackerFactory {
 
-    constructor(private defaultMinDelayInMs: number) {
+    constructor(@Inject(DEfAULT_MIN_DELAY_TOKEN) private  defaultMinDelayInMs: number) {
     }
 
     createTracker(complete: boolean, minDelayInMs?: number): WorkTracker {
@@ -12,43 +14,32 @@ export class WorkTrackerFactory {
     }
 }
 
-export function defaultWorkTrackerFactoryFactory (){
-    return new WorkTrackerFactory(300);
+function noop() {
 }
 
-function noop(){}
 
-
-function deferred(delayInMs: number, action?: ()=>any): Promise<any> {
-    return new Promise((resolve) =>{
-       setTimeout(()=>{
-           resolve((action || noop)());
-       }, delayInMs);
+function deferred(delayInMs: number, action?: () => any): Promise<any> {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve((action || noop)());
+        }, delayInMs);
     });
 }
 
 
-
-export abstract class WorkTracker{
+export abstract class WorkTracker {
     track(promise: Promise<any>) {
         throw "Should be overridden";
     }
-    get complete():BehaviorSubject<boolean>{
+
+    get complete(): BehaviorSubject<boolean> {
         throw "Should be overridden";
+    }
 }
 
-    // subscribe(action:(value:boolean)=>void){
-    //     throw "Should be overridden";
-    // }
-    //
-    // unsubscribe(action:(value:boolean)=>void){
-    //     throw "Should be overridden";
-    // }
-}
-
-export class WorkTrackerInternal extends WorkTracker{
+export class WorkTrackerInternal extends WorkTracker {
     private _activePromises: number = 0;
-    private _completeSubject:BehaviorSubject<boolean>;
+    private _completeSubject: BehaviorSubject<boolean>;
 
     constructor(complete: boolean,
                 public minDelayInMs: number) {
@@ -56,7 +47,7 @@ export class WorkTrackerInternal extends WorkTracker{
         this._completeSubject = new BehaviorSubject(complete);
     }
 
-    get complete():BehaviorSubject<boolean>{
+    get complete(): BehaviorSubject<boolean> {
         return this._completeSubject;
     }
 
@@ -66,11 +57,11 @@ export class WorkTrackerInternal extends WorkTracker{
     }
 
     trackInternal(promise: Promise<any>, minDelay?: number) {
-        const complete = (x:any) => {
+        const complete = (x: any) => {
             this.completePromise();
             return promise;
         };
-        const completeAndBubbleReject = (e:any) => {
+        const completeAndBubbleReject = (e: any) => {
             this.completePromise();
             return Promise.reject(e);
         };

@@ -3,7 +3,7 @@ import {LoadingPaneComponent} from "./components/loading-pane";
 import {
     WorkTrackerFactory,
     WorkTracker,
-    defaultWorkTrackerFactoryFactory
+    DEfAULT_MIN_DELAY_TOKEN
 } from "./services/work-tracker.service";
 import {BrowserModule} from "@angular/platform-browser";
 
@@ -19,10 +19,11 @@ import {BrowserModule} from "@angular/platform-browser";
         BrowserModule
     ],
     providers: [
-        {provide: WorkTrackerFactory, useFactory: defaultWorkTrackerFactoryFactory, deps: []}
+        {provide: DEfAULT_MIN_DELAY_TOKEN, useValue:300},
+        WorkTrackerFactory
     ]
 })
 export class LoadingPaneModule {
 }
 
-export {WorkTrackerFactory, WorkTracker, LoadingPaneComponent};
+export {WorkTrackerFactory, WorkTracker, LoadingPaneComponent, DEfAULT_MIN_DELAY_TOKEN};
