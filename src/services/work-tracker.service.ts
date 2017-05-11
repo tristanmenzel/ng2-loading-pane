@@ -52,7 +52,6 @@ export class WorkTrackerInternal extends WorkTracker {
     }
 
     track(promise: Promise<any>) {
-        console.log(promise);
         return this.trackInternal(promise, this.minDelayInMs);
     }
 
