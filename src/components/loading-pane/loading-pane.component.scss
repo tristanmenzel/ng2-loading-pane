@@ -8,7 +8,7 @@ $lpSpinnerBorderColor: $lpSpinnerColor $lpSpinnerColor transparent $lpSpinnerCol
 $lpSpinnerSize: 1.5rem;
 $lpAnimationEasing: cubic-bezier(.34,.7,.61,.28);
 $lpAnimationTime: 800ms;
-body .loading-pane {
+.loading-pane {
     min-height: $lpSpinnerSize;
     &.loading {
         position: relative;
