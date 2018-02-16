@@ -2,11 +2,14 @@
 $lpOverlayColor: #fff;
 $lpOverlayOpacity: 0.50;
 $lpSpinnerColor: blue;
-$lpSpinnerBorder: dashed 4px $lpSpinnerColor;
-$lpSpinnerSize: 3rem;
-
-.loading-pane {
-
+$lpSpinnerBorderWidth: .25rem;
+$lpSpinnerBorderStyle: solid;
+$lpSpinnerBorderColor: $lpSpinnerColor $lpSpinnerColor transparent $lpSpinnerColor;
+$lpSpinnerSize: 1.5rem;
+$lpAnimationEasing: cubic-bezier(.34,.7,.61,.28);
+$lpAnimationTime: 800ms;
+body .loading-pane {
+    min-height: $lpSpinnerSize;
     &.loading {
         position: relative;
         &::before {
@@ -24,10 +27,12 @@ $lpSpinnerSize: 3rem;
             content: '';
             width: $lpSpinnerSize;
             height: $lpSpinnerSize;
-            border: $lpSpinnerBorder;
+            border-width: $lpSpinnerBorderWidth;
+            border-style: $lpSpinnerBorderStyle;
+            border-color: $lpSpinnerBorderColor;
             border-radius: 50%;
-            -webkit-animation: lp-spinner 1s linear infinite;
-            animation: lp-spinner 1s linear infinite;
+            -webkit-animation: lp-spinner $lpAnimationTime $lpAnimationEasing infinite;
+            animation: lp-spinner $lpAnimationTime $lpAnimationEasing infinite;
             position: absolute;
             z-index: 501;
             left: 50%;

@@ -1,7 +1,7 @@
-import {Injectable, OpaqueToken, Inject} from '@angular/core';
+import {Injectable,  Inject, InjectionToken } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 
-export const DEfAULT_MIN_DELAY_TOKEN = new OpaqueToken('Default min dalay');
+export const DEfAULT_MIN_DELAY_TOKEN = new InjectionToken ('Default min dalay');
 
 @Injectable()
 export class WorkTrackerFactory {
