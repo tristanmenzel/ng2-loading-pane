@@ -5,7 +5,7 @@ https://github.com/tristanmenzel/angular-loading-pane
 
 ## Install
 
-```javascript
+```powershell
 npm install ng2-loading-pane --save
 ```
 
@@ -13,7 +13,7 @@ npm install ng2-loading-pane --save
 
 **Include module in your AppModule**
 
-```javascript
+```typescript
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
@@ -35,9 +35,9 @@ export class AppModule {
 
 **Create a `WorkTracker` instance using the factory and expose it on your component's controller**
 
-```javascript
+```typescript
 import {Component, OnInit} from '@angular/core';
-import {WorkTrackerFactory, WorkTracker} from 'ng2-loading-pane'; // 1. Import required classes from node_modules
+import {WorkTracker} from 'ng2-loading-pane'; // 1. Import required classes from node_modules
 import {Http} from "@angular/http";
 
 @Component({
@@ -48,13 +48,12 @@ export class LoadingPaneTestComponent {
     private tracker: WorkTracker;
 
     constructor(
-        workTrackerFactory: WorkTrackerFactory, // 2. Resolve an instance of the factory
         private http:Http) {
-        this.tracker = workTrackerFactory.createTracker(true); // 3. Use the factory to create a tracker
+        this.tracker = new WorkTracker(true, 300); // 2. new up a WorkTracker
     }
 
     simulateAsyncOperation() {
-        // 4. When performing an async operation, pass the promise to the tracker
+        // 3. When performing an async operation, pass the promise to the tracker
         this.tracker.track(new Promise((resolve) => {
             setTimeout(() => {
                 resolve(true);
@@ -63,7 +62,7 @@ export class LoadingPaneTestComponent {
     }
 
     makeHttpRequest(){
-        // 4. When performing an async operation, pass the promise to the tracker
+        // 3. When performing an async operation, pass the promise to the tracker
         let promise = this.http.get('/api/users').toPromise();
         this.tracker.track(promise);
     }

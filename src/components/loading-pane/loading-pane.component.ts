@@ -1,27 +1,25 @@
-import {Component, OnInit, Input, ViewEncapsulation} from '@angular/core';
-import { WorkTracker} from "../../services/work-tracker.service";
-import {Observable} from "rxjs";
+import { Component, Input, ViewEncapsulation, DoCheck, HostBinding } from '@angular/core';
+import { WorkTracker } from "../../services/work-tracker.service";
 
 @Component({
-    selector: 'loading-pane',
-    templateUrl: 'loading-pane.component.html',
-    styleUrls: ['loading-pane.component.scss'],
-    encapsulation: ViewEncapsulation.None
+  selector: 'loading-pane',
+  templateUrl: 'loading-pane.component.html',
+  styleUrls: ['loading-pane.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
-export class LoadingPaneComponent implements OnInit {
+export class LoadingPaneComponent implements DoCheck {
 
-    @Input()
-    public tracker:WorkTracker;
+  @HostBinding('class.loading') public loading: boolean;
 
-    public isLoading:Observable<boolean>;
+  @Input()
+  public tracker: WorkTracker;
 
-    constructor() {
-    }
+  constructor() {
+  }
 
-    ngOnInit() {
-        this.isLoading = this.tracker.complete.map((isComplete:boolean)=>{
-            return !isComplete;
-        });
-    }
+  ngDoCheck(): void {
+    this.loading = !!(this.tracker && !this.tracker.complete);
+  }
+
 
 }
