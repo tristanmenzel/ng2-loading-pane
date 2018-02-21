@@ -1,3 +1,4 @@
 .idea
 dist
 build
+/ng2-loading-pane-*.tgz

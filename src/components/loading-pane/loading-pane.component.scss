@@ -1,5 +1,5 @@
 $lpOverlayColor: #fff;
-$lpOverlayOpacity: 0.50;
+$lpOverlayOpacity: 0.20;
 $lpSpinnerColor: blue;
 $lpSpinnerBorderWidth: .25rem;
 $lpSpinnerBorderStyle: solid;
@@ -21,6 +21,7 @@ $lpAnimationTime: 800ms;
       background-color: $lpOverlayColor;
       opacity: $lpOverlayOpacity;
       z-index: 500;
+      position:absolute;
     }
 
     &::after {
