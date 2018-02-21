@@ -1,7 +1,7 @@
 {
   "name": "ng2-loading-pane",
-  "version": "1.1.2",
-  "description": "A simple loading pane implementation for angular 2 based on promises.",
+  "version": "1.2.0",
+  "description": "A simple loading pane implementation for angular 2-5 based on promises.",
   "readme": "readme.md",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",

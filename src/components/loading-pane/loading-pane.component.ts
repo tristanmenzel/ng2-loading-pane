@@ -4,8 +4,7 @@ import { WorkTracker } from "../../services/work-tracker.service";
 @Component({
   selector: 'loading-pane',
   templateUrl: 'loading-pane.component.html',
-  styleUrls: ['loading-pane.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['loading-pane.component.scss']
 })
 export class LoadingPaneComponent implements DoCheck {
 
