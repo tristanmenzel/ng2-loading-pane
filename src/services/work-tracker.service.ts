@@ -27,7 +27,7 @@ export class WorkTracker {
     return this.trackInternal(promise, this.minDelayInMs);
   }
 
-  trackInternal<T>(promise: Promise<any>, minDelay?: number): Promise<T> {
+  private trackInternal<T>(promise: Promise<any>, minDelay?: number): Promise<T> {
     const complete = (x: any) => {
       this.updateIsComplete();
       return promise;

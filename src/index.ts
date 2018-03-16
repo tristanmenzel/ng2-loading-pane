@@ -1,8 +1,8 @@
-import { NgModule, ModuleWithProviders } from "@angular/core";
-import { LoadingPaneComponent } from "./components/loading-pane";
-import { WorkTracker } from "./services/work-tracker.service";
+import { NgModule } from "@angular/core";
+import { LoadingPaneComponent } from "./components/loading-pane/loading-pane.component";
+export { LoadingPaneComponent } from "./components/loading-pane/loading-pane.component";
+export { WorkTracker } from "./services/work-tracker.service";
 import { BrowserModule } from "@angular/platform-browser";
-
 
 @NgModule({
   declarations: [
@@ -19,4 +19,3 @@ import { BrowserModule } from "@angular/platform-browser";
 export class LoadingPaneModule {
 }
 
-export { WorkTracker, LoadingPaneComponent };
