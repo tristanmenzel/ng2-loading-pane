@@ -2,3 +2,4 @@
 dist
 build
 /ng2-loading-pane-*.tgz
+/node_modules/
