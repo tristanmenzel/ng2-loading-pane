@@ -33,7 +33,7 @@ export class AppModule {
 }
 ```
 
-**Create a `WorkTracker` instance using the factory and expose it on your component's controller**
+**Create a `WorkTracker` instance and expose it on your component's controller**
 
 ```typescript
 import {Component, OnInit} from '@angular/core';
